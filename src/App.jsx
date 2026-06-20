@@ -8,16 +8,18 @@ import Orders from './pages/Orders';
 
 const App = () => {
   return (
-    <div>
+    <div className="w-full h-screen flex flex-col overflow-hidden ">
       <Navbar />
-      <div className="w-full max-w-300 h-px bg-gray-300 m-auto " ></div>
-      <div className='flex w-full max-w-300 m-auto'>
+      <div className="w-full max-w-300 h-px bg-gray-300 m-auto "></div>
+      <div className="flex w-full max-w-300 m-auto flex-1 overflow-hidden">
         <Sidebar />
-        <Routes>
-          <Route path='/add' element={<Add/>} />
-          <Route path='/list' element={<List/>} />
-          <Route path='/orders' element={<Orders/>} />
-        </Routes>
+        <div className="flex-1 h-full overflow-y-auto p-4 md:p-10">
+          <Routes>
+            <Route path="/add" element={<Add />} />
+            <Route path="/list" element={<List />} />
+            <Route path="/orders" element={<Orders />} />
+          </Routes>
+        </div>
       </div>
     </div>
   );
