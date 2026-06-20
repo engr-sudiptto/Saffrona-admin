@@ -1,10 +1,19 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom';
 
 const Sidebar = () => {
+  const navLinkClass = ({ isActive }) =>
+    `border w-full pl-2 lg:pl-3 py-2 md:py-2.5 border-gray-300 border-r-0 flex items-center gap-2 rounded-l-md transition-colors ${
+      isActive
+        ? 'bg-amber-100 text-amber-600 font-medium border-l-4 border-l-amber-500'
+        : 'bg-transparent text-gray-500 hover:bg-gray-50'
+    }`;
+  
+  
   return (
     <div>
-      <div className="flex flex-col fixed top-18 md:top-20 lg:top-21 w-17 sm:w-30 lg:w-40 items-center h-screen gap-5 border-r border-gray-300 pl-3 sm:pl-5 lg:pl-5 pt-5 sm:pt-8 md:pt-10 lg:pt-15">
-        <div className="border w-full pl-1 lg:pl-2 lg:py-2 py-0.5 md:py-1  border-gray-300 border-r-0 flex items-center gap-1">
+      <div className="flex flex-col  w-13 sm:w-30 lg:w-40 items-center h-screen gap-5 border-r border-gray-300 pl-3 sm:pl-5 lg:pl-5 pt-5 sm:pt-8 md:pt-10 lg:pt-15">
+        <NavLink to='/add' className={navLinkClass}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -22,8 +31,8 @@ const Sidebar = () => {
           <p className="hidden sm:block text-xs text-gray-500 lg:text-sm">
             Add items
           </p>
-        </div>
-        <div className="border w-full pl-1 py-0.5 md:py-1 border-gray-300 border-r-0 flex items-center gap-1 lg:pl-2 lg:py-2">
+        </NavLink>
+        <NavLink to='/list' className={navLinkClass}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -41,8 +50,8 @@ const Sidebar = () => {
           <p className="hidden sm:block  text-xs text-gray-500 lg:text-sm">
             List items
           </p>
-        </div>
-        <div className="border w-full pl-1 py-0.5 md:py-1 border-gray-300 border-r-0 flex items-center gap-1 lg:pl-2 lg:py-2">
+        </NavLink>
+        <NavLink to='/orders' className={navLinkClass}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -60,7 +69,7 @@ const Sidebar = () => {
           <p className="hidden sm:block  text-xs text-gray-500 lg:text-sm">
             Orders
           </p>
-        </div>
+        </NavLink>
       </div>
     </div>
   );
