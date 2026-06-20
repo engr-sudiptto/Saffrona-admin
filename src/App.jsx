@@ -1,9 +1,15 @@
 import React from 'react'
+import Navbar from './components/Navbar';
+import Sidebar from './components/Sidebar';
 
 const App = () => {
   return (
     <div>
-      <h1>Hello, this is the admin panel for Saffrona</h1>
+      <Navbar />
+      <div>div for hr</div>
+      <div>
+        <Sidebar/>
+      </div>
     </div>
   );
 }
