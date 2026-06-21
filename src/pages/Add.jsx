@@ -1,6 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Add = () => {
+
+  const [image, setImage] = useState(false)
+  const [data, setData] = useState({
+    name: "",
+    description: "",
+    price: "",
+    category:"Salad"
+  })
+
+  const onChangeHandler = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setData(data=>({...data, [name]:value}))
+  }
+
+  useEffect(() => {
+    console.log(data)
+  },[data])
+
   return (
     <div className="w-full p-4 md:p-10 rounded-xl border-gray-100 mx-auto max-w-250 md:bg-white md:rounded-xl md:shadow-sm md:border-gray-100 border-0 m-4">
       {/* ---- heading -----  */}
@@ -14,16 +33,34 @@ const Add = () => {
           <label className="text-sm font-medium text-gray-400">
             Upload Image
           </label>
-          <div className="relative group flex flex-col items-center justify-center w-40 h-30 border-2 border-dashed border-gray-300 hover:border-amber-500 bg-gray-50 hover:bg-amber-50/30 rounded-lg cursor-pointer transition-all overflow-hidden">
-            <input
-              type="file"
-              className="absolute inset-0 opacity-0 cursor-pointer z-10"
-            />
-            <div className="flex flex-col items-center text-gray-400 group-hover:text-amber-600 transition-colors">
-              <i className="fa-solid fa-upload text-2xl mb-1"></i>
-              <p className="text-xs font-medium">Upload</p>
+          {image ? (
+            <div className="w-40 h-30 overflow-hidden relative group rounded-lg">
+              <img
+                className="object-cover w-full h-full"
+                src={URL.createObjectURL(image)}
+                alt="Product image"
+              />
+              <button
+                type="button"
+                onClick={() => setImage(false)}
+                className="absolute top-1 right-1 bg-amber-500 text-white rounded-full text-xs w-5 h-5 font-black cursor-pointer"
+              >
+                ✕
+              </button>
             </div>
-          </div>
+          ) : (
+            <div className="relative group flex flex-col items-center justify-center w-40 h-30 border-2 border-dashed border-gray-300 hover:border-amber-500 bg-gray-50 hover:bg-amber-50/30 rounded-lg cursor-pointer transition-all overflow-hidden">
+              <input
+                onChange={e => setImage(e.target.files[0])}
+                type="file"
+                className="absolute inset-0 opacity-0 cursor-pointer z-10"
+              />
+              <div className="flex flex-col items-center text-gray-400 group-hover:text-amber-600 transition-colors">
+                <i className="fa-solid fa-upload text-2xl mb-1"></i>
+                <p className="text-xs font-medium">Upload</p>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* ---- Product Name -----  */}
@@ -32,6 +69,9 @@ const Add = () => {
             Product Name
           </label>
           <input
+            name="name"
+            onChange={onChangeHandler}
+            value={data.name}
             type="text"
             placeholder="Type here"
             className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all"
@@ -44,6 +84,9 @@ const Add = () => {
             Product Description
           </label>
           <textarea
+            name="description"
+            onChange={onChangeHandler}
+            value={data.description}
             placeholder="Write content here"
             rows="4"
             className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all resize-none"
@@ -57,7 +100,11 @@ const Add = () => {
             <label className="text-sm font-medium text-gray-400">
               Product Category
             </label>
-            <select className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm text-gray-700 bg-white focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all cursor-pointer">
+            <select
+              name="category"
+              onChange={onChangeHandler}
+              className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm text-gray-700 bg-white focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all cursor-pointer"
+            >
               <option value="Salad">Salad</option>
               <option value="Roll">Roll</option>
               <option value="Dessert">Dessert</option>
@@ -79,6 +126,9 @@ const Add = () => {
                 $
               </span>
               <input
+                name="price"
+                onChange={onChangeHandler}
+                value={data.price}
                 type="text"
                 placeholder="20"
                 className="w-full pl-7 pr-4 py-2.5 border border-gray-300 rounded-lg text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all"
