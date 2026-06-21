@@ -1,9 +1,10 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const Add = () => {
-
+  const navigate = useNavigate()
   const url = 'http://localhost:4000'
   const [image, setImage] = useState(false)
   const [data, setData] = useState({
@@ -40,6 +41,7 @@ const Add = () => {
       });
       setImage(false)
       toast.success(response.data.message)
+      navigate('/list')
     } else {
       toast.error(response.data.message)
     }
