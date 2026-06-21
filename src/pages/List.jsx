@@ -21,6 +21,19 @@ const List = () => {
     }
   };
 
+  // ----- remove food item functionality -------
+    const removeFoodItem = async foodId => {
+      const response = await axios.post(`${url}/api/food/remove`, {
+        id: foodId,
+      });
+      await fetchList();
+      if (response.data.success) {
+        toast.success(response.data.message)
+      } else {
+        toast.error('Error to remove food item')
+      }
+    };
+
   useEffect(() => {
     fetchList();
   }, []);
@@ -93,7 +106,7 @@ const List = () => {
 
                 {/* --- Action Button --- */}
                 <div className="flex justify-center items-center">
-                  <button className="text-gray-400 hover:text-red-500 hover:bg-red-50 p-1.5 sm:p-2 rounded-lg transition-all duration-150 cursor-pointer border border-transparent hover:border-red-100 active:scale-95">
+                  <button onClick={()=>removeFoodItem(item._id)} className="text-gray-400 hover:text-red-500 hover:bg-red-50 p-1.5 sm:p-2 rounded-lg transition-all duration-150 cursor-pointer border border-transparent hover:border-red-100 active:scale-95">
                     <i className="fa-solid fa-xmark text-sm sm:text-lg"></i>
                   </button>
                 </div>
