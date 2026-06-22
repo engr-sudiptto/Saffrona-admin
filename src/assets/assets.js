@@ -1,5 +1,5 @@
 import mainLogo from './mainLogo.png'
-import profileImage from './profileImage.jpg'
+import profileImage from './profileImage.png'
 
 export const assets = {
   mainLogo,
