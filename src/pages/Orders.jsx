@@ -19,6 +19,32 @@ const Orders = ({ url }) => {
     }
   };
 
+  const statusHndler = async (e, orderId) => {
+    const nextStatus = e.target.value;
+    setOrders(prevOrders =>
+      prevOrders.map(order =>
+        order._id === orderId ? { ...order, status: nextStatus } : order,
+      ),
+    );
+    try {
+      const response = await axios.post(url + '/api/order/status', {
+        orderId,
+        status: nextStatus,
+      });
+      if (response.data.success) {
+        toast.success('Status updated!');
+        await fetchOrderData();
+      } else {
+        toast.error(response.data.message || 'Failed to update status');
+        await fetchOrderData();
+      }
+    } catch (error) {
+      toast.error('Network Error');
+      console.error(error);
+      await fetchOrderData();
+    }
+  };
+
   useEffect(() => {
     fetchOrderData();
   }, []);
@@ -98,7 +124,11 @@ const Orders = ({ url }) => {
                 <p className="font-semibold text-gray-800 mb-2 md:hidden">
                   Status
                 </p>
-                <select className="w-full bg-gray-50 border border-gray-300 text-gray-700 py-2 px-4 pr-8 rounded-lg cursor-pointer text-xs">
+                <select
+                  onChange={e => statusHndler(e, order._id)}
+                  value={order.status}
+                  className="w-full bg-gray-50 border border-gray-300 text-gray-700 py-2 px-4 pr-8 rounded-lg cursor-pointer text-xs"
+                >
                   <option value="Food Processing">Food Processing</option>
                   <option value="Out of delivery">Out of delivery</option>
                   <option value="Delivered">Delivered</option>
