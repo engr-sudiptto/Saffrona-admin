@@ -18,7 +18,7 @@ const App = () => {
       <div className="w-full max-w-300 h-px bg-gray-300 m-auto "></div>
       <div className="flex w-full max-w-300 m-auto flex-1 overflow-hidden">
         <Sidebar />
-        <div className="flex-1 h-full overflow-y-auto p-4 md:p-10">
+        <div className="flex-1 h-full overflow-y-auto ">
           <Routes>
             <Route path="/add" element={<Add url={url} />} />
             <Route path="/list" element={<List url={url} />} />

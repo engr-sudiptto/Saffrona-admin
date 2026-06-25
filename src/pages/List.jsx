@@ -38,7 +38,7 @@ const List = ({url}) => {
   }, []);
 
   return (
-    <div className="w-full antialiased text-gray-800">
+    <div className="w-full antialiased text-gray-800 p-4">
       {/* ------ Header Section ------- */}
       <div className="flex items-center justify-between mb-6 pb-4 border-b border-gray-100">
         <div>
