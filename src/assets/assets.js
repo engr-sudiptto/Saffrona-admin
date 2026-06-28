@@ -5,5 +5,3 @@ export const assets = {
   mainLogo,
   profileImage,
 }
-
-export const url = 'https://saffrona-backend.onrender.com';

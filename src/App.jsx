@@ -9,7 +9,7 @@ import { ToastContainer } from 'react-toastify';
 
 const App = () => {
 
-  const url = 'http://localhost:4000'
+  const url = 'https://saffrona-backend.onrender.com';
 
   return (
     <div className="w-full h-screen flex flex-col overflow-hidden ">
