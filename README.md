@@ -42,3 +42,103 @@
 - 📊 **Dynamic Data Management:** Real-time data retrieval, storage, and manipulation using MongoDB and Mongoose.
 - 🛠️ **RESTful API Architecture:** Scalable and well-structured Express routes for seamless client-server communication.
 - 🎨 **Elegant User Interface:** Smooth transitions, modern components, and custom interactive UI/UX designs.
+
+---
+
+## 📂 Project Folder Structure
+
+```text
+saffrona/
+│
+├── frontend/
+│   ├── src/
+│   │   ├── assets/         # Images, icons, and local media
+│   │   ├── components/     # Reusable UI elements (Navbar, Footer, etc.)
+│   │   ├── pages/          # App views/pages (Home, Menu, Contact, etc.)
+│   │   ├── context/        # State management (AuthContext, etc.)
+│   │   ├── App.jsx         # Core app routing and layout
+│   │   ├── index.css       # Global Tailwind CSS configurations
+│   │   └── main.jsx        # Frontend entry file
+│   ├── tailwind.config.js  # Tailwind custom configurations
+│   ├── vite.config.js      # Vite specific bundling configurations
+│   └── package.json
+└── README.md
+```
+
+---
+
+## 🛠️ Installation & Setup
+
+Follow these steps to set up and run Saffrona locally on your computer.
+
+### Prerequisites
+Make sure you have **Node.js** and **MongoDB** installed on your machine.
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/engr-sudiptto/Saffrona.git
+cd saffrona
+```
+
+### 2. Backend Configuration
+1. Navigate to the backend folder:
+   ```bash
+   git clone https://github.com/engr-sudiptto/Saffrona-backend.git
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Create a `.env` file in the root of the backend directory and add the following configuration:
+   ```env
+   PORT = 4000
+   MONGO_URI = your_mongodb_connection_string
+   JWT_SECRET = your_super_secret_jwt_key
+   ```
+4. Start the backend development server:
+   ```bash
+   npm run dev
+   ```
+
+### 3. Frontend Configuration
+1. Navigate back to the frontend folder:
+   ```bash
+   git clone https://github.com/engr-sudiptto/Saffrona.git
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the Vite development server:
+   ```bash
+   npm run dev
+   ```
+
+---
+
+## 🌐 Deployment Details
+
+- **Frontend:** Automatically built and deployed via **Netlify** from the main branch.
+- **Backend:** Hosted on **Render**, connected with MongoDB Atlas cloud database.
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+
+## 👨‍💻 Author
+
+**Your Name**
+* GitHub: [engr-sudipttos](https://github.com/engr-sudiptto)
+* LinkedIn: [engr-sudiptto](https://www.linkedin.com/in/engr-sudiptto/)
+
+*Give a ⭐️ if this project inspired you!*
+<br>
+<br>
+
+
+<p align="center"><b>Sudipto Das</b> | Amplifying human capability and scaling innovation with the speed of AI.</p>
